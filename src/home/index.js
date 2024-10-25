@@ -1,29 +1,28 @@
-import React from "react";
 import {
+  AccountBox,
+  Build,
+  Code,
+  Image,
+  Public,
+  TravelExplore,
+} from "@mui/icons-material"; // For placeholder icons
+import {
+  Box,
   Button,
   Card,
   CardContent,
   CardMedia,
-  Typography,
-  ThemeProvider,
+  Container,
   createTheme,
   CssBaseline,
-  Box,
-  Grid,
-  Container,
   Grid2,
+  ThemeProvider,
+  Typography,
 } from "@mui/material";
-import { auth } from "../firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import React from "react";
 import welcomeBg from "../assets/images/welcome-bg.webp";
-import {
-  AccountBox,
-  Build,
-  Public,
-  TravelExplore,
-  Code,
-  Image,
-} from "@mui/icons-material"; // For placeholder icons
+import { auth } from "../firebase";
 
 const theme = createTheme({
   palette: {
