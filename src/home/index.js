@@ -9,11 +9,21 @@ import {
   createTheme,
   CssBaseline,
   Box,
+  Grid,
   Container,
+  Grid2,
 } from "@mui/material";
 import { auth } from "../firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import welcomeBg from '../assets/images/welcome-bg.webp'
+import welcomeBg from "../assets/images/welcome-bg.webp";
+import {
+  AccountBox,
+  Build,
+  Public,
+  TravelExplore,
+  Code,
+  Image,
+} from "@mui/icons-material"; // For placeholder icons
 
 const theme = createTheme({
   palette: {
@@ -67,7 +77,7 @@ const HomePage = () => {
           <Typography variant="h3" color="primary" gutterBottom>
             Welcome to Person Resume
           </Typography>
-          <Typography variant="body1" color="textSecondary" paragraph>
+          <Typography variant="body1" color="textSecondary">
             Build and publish your resume with a unique link. Sign up to get
             started, customize your professional details, and let others find
             you easily.
@@ -112,38 +122,85 @@ const HomePage = () => {
             }}
           >
             <CardContent>
-              <Typography variant="h4" color="secondary" gutterBottom>
-                What is Person Resume?
-              </Typography>
-              <Typography variant="body1" paragraph>
-                **Person Resume** allows you to create a personalized online
-                resume with a unique URL based on your phone number, like
-                `person-resume.web.app/1234567890`. This quick and easy solution
-                is ideal for professionals seeking an editable, web-accessible
-                resume.
-              </Typography>
-              <Typography variant="body1" paragraph>
-                - **Create an Account**: Begin by signing up with your details.
-              </Typography>
-              <Typography variant="body1" paragraph>
-                - **Build Your Resume**: Input your personal information,
-                professional experience, and any other relevant data.
-              </Typography>
-              <Typography variant="body1" paragraph>
-                - **Publish Your Resume**: The unique URL will be generated with
-                your phone number to make it easily shareable.
-              </Typography>
-              <Typography variant="body1" paragraph>
-                - **Customization for Developers**: If you're a developer, feel
-                free to clone this project, create a Firebase account, and host
-                your own version. With your custom domain, you can allow others
-                to create their resumes on your hosted platform.
-              </Typography>
-              <Typography variant="body1" paragraph>
-                As a React developer traveling as a digital nomad, I’ve crafted
-                this tool to help professionals establish an accessible online
-                presence quickly and reliably.
-              </Typography>
+              <Grid2 container spacing={4}>
+                <Grid2 item xs={12}>
+                  <Typography variant="h4" color="secondary" gutterBottom>
+                    What is Person Resume?
+                  </Typography>
+                </Grid2>
+
+                <Grid2 item xs={12} sm={6}>
+                  <Image
+                    sx={{ fontSize: 80, color: theme.palette.primary.main }}
+                  />
+                  <Typography variant="body1" component="p" gutterBottom>
+                    <strong>Person Resume</strong> allows you to create a
+                    personalized online resume with a unique URL based on your
+                    phone number, like `person-resume.web.app/1234567890`.
+                  </Typography>
+                </Grid2>
+
+                <Grid2 item xs={12} sm={6}>
+                  <AccountBox
+                    sx={{ fontSize: 80, color: theme.palette.secondary.main }}
+                  />
+                  <Typography variant="body1" component="p" gutterBottom>
+                    <strong>Create an Account</strong>: Begin by signing up with
+                    your details.
+                  </Typography>
+                </Grid2>
+
+                <Grid2 item xs={12} sm={6}>
+                  <Build
+                    sx={{ fontSize: 80, color: theme.palette.primary.main }}
+                  />
+                  <Typography variant="body1" component="p" gutterBottom>
+                    <strong>Build Your Resume</strong>: Input your personal
+                    information, professional experience, and any other relevant
+                    data.
+                  </Typography>
+                </Grid2>
+
+                <Grid2 item xs={12} sm={6}>
+                  <Public
+                    sx={{ fontSize: 80, color: theme.palette.secondary.main }}
+                  />
+                  <Typography variant="body1" component="p" gutterBottom>
+                    <strong>Publish Your Resume</strong>: The unique URL will be
+                    generated with your phone number to make it easily
+                    shareable.
+                  </Typography>
+                </Grid2>
+
+                <Grid2 item xs={12}>
+                  <Typography variant="body1" component="p" gutterBottom>
+                    As a React developer traveling as a digital nomad, I’ve
+                    crafted this tool to help professionals establish an
+                    accessible online presence quickly and reliably.
+                  </Typography>
+                </Grid2>
+
+                <Grid2 item xs={12}>
+                  <TravelExplore
+                    sx={{ fontSize: 80, color: theme.palette.primary.main }}
+                  />
+                  <Typography variant="body1" component="p" gutterBottom>
+                    <strong>About the Developer</strong>: This tool is built by
+                    a developer passionate about creating accessible solutions.
+                  </Typography>
+                </Grid2>
+
+                <Grid2 item xs={12}>
+                  <Code
+                    sx={{ fontSize: 80, color: theme.palette.secondary.main }}
+                  />
+                  <Typography variant="body1" component="p">
+                    <strong>Customization for Developers</strong>: If you're a
+                    developer, feel free to clone this project, create a
+                    Firebase account, and host your own version.
+                  </Typography>
+                </Grid2>
+              </Grid2>
             </CardContent>
           </Card>
         </Container>
