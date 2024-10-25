@@ -1,22 +1,20 @@
 // App.js
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './theme'; // Import the theme
+import React, { useState } from 'react';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import AllNumbers from './all-numbers';
 import Home from './home';
 import MyResume from './my-resume';
-import AllNumbers from './all-numbers';
-import NotFound from './not-found';
-import Login from './login';
 import Navigation from './navigation';
+import NotFound from './not-found';
+import theme from './theme'; // Import the theme
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user] = useState({ name: "John Doe", phoneNumber: "19495221879" });
 
-  const login = () => {
+  const handleLogin = () => {
     setIsAuthenticated(true);
-    // Set user details after successful login, e.g., from API
   };
   
   const logout = () => {
@@ -29,16 +27,15 @@ const App = () => {
       <Router>
         <Navigation isAuthenticated={isAuthenticated} logout={logout} user={user} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home login={handleLogin}/>} />
           <Route 
             path="/my-resume" 
             element={isAuthenticated ? <MyResume /> : <Navigate to="/" />} 
           />
           <Route 
-            path="/allnumbers/:phoneNumber" 
+            path="/:phoneNumber" 
             element={<AllNumbers />} 
           />
-          <Route path="/login" element={<Login login={login} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

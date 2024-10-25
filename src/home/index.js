@@ -22,27 +22,26 @@ import welcomeBg from "../assets/images/welcome-bg.webp";
 import { auth } from "../firebase";
 import theme from "../theme";
 
-const handleSignUp = async () => {
-  const provider = new GoogleAuthProvider();
-  try {
-    await signInWithPopup(auth, provider);
-    alert("Successfully signed up!");
-  } catch (error) {
-    alert("Error signing up: " + error.message);
-  }
-};
+const HomePage = ({ login }) => {
+  const handleSignUp = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      login();
+    } catch (error) {
+      alert("Error signing up: " + error.message);
+    }
+  };
 
-const handleLogin = async () => {
-  const provider = new GoogleAuthProvider();
-  try {
-    await signInWithPopup(auth, provider);
-    alert("Successfully logged in!");
-  } catch (error) {
-    alert("Error logging in: " + error.message);
-  }
-};
-
-const HomePage = () => {
+  const handleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      login();
+    } catch (error) {
+      alert("Error logging in: " + error.message);
+    }
+  };
   return (
     <Box
       sx={{
