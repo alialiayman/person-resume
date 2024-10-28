@@ -7,7 +7,7 @@ import Home from './home';
 import MyResume from './my-resume';
 import Navigation from './navigation';
 import NotFound from './not-found';
-import theme from './theme'; // Import the theme
+import theme from './theme';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -19,15 +19,21 @@ const App = () => {
   
   const logout = () => {
     setIsAuthenticated(false);
-    // Clear user details or handle logout logic here
   };
+
+  // Check if the path contains a phone number (e.g., "/19495221879")
+  const path = window.location.pathname;
+  const isPhoneNumberPath = path.match(/^\/\d{10,15}$/); // Matches 10-15 digit numbers
 
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <Navigation isAuthenticated={isAuthenticated} logout={logout} user={user} />
+        {/* Conditionally render Navigation */}
+        {isAuthenticated || !isPhoneNumberPath ? (
+          <Navigation isAuthenticated={isAuthenticated} logout={logout} user={user} />
+        ) : null}
         <Routes>
-          <Route path="/" element={<Home login={handleLogin}/>} />
+          <Route path="/" element={<Home login={handleLogin} />} />
           <Route 
             path="/my-resume" 
             element={isAuthenticated ? <MyResume /> : <Navigate to="/" />} 
