@@ -20,27 +20,27 @@ const MyResume = ({ userId }) => {
   const [newEmployer, setNewEmployer] = useState({ company: "", position: "", date: "", location: "" });
   const [newSkill, setNewSkill] = useState("");
 
-  useEffect(() => {
-    const fetchResumeData = async () => {
-      const docRef = doc(db, "resumes", userId);
-      const docSnap = await getDoc(docRef);
+  // useEffect(() => {
+  //   const fetchResumeData = async () => {
+  //     const docRef = doc(db, "resumes", userId);
+  //     const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        setResumeData(docSnap.data());
-      } else {
-        // Initialize with empty data
-        setResumeData({
-          education: "",
-          overview: "",
-          contactInfo: "",
-          previousEmployers: [],
-          skills: [],
-        });
-      }
-    };
+  //     if (docSnap.exists()) {
+  //       setResumeData(docSnap.data());
+  //     } else {
+  //       // Initialize with empty data
+  //       setResumeData({
+  //         education: "",
+  //         overview: "",
+  //         contactInfo: "",
+  //         previousEmployers: [],
+  //         skills: [],
+  //       });
+  //     }
+  //   };
 
-    // fetchResumeData();
-  }, [userId]);
+  //   // fetchResumeData();
+  // }, [userId]);
 
   const handleSave = async () => {
     if (resumeData) {
